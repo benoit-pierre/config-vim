@@ -531,6 +531,14 @@ let g:netrw_banner = 0
 let g:netrw_hide = 1
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
+" Configure filebeagle plugin.
+
+map <silent> _ <Plug>FileBeagleOpenCurrentBufferDir
+let g:filebeagle_buffer_normal_key_maps =
+      \ {
+      \ 'FileBeagleBufferFocusOnParent': '_'
+      \ }
+
 " Configure yasnippets.
 if has('ruby') && !exists('g:vless')
   ruby $AUTHOR = VIM::evaluate('g:tskelUserName')
