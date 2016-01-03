@@ -548,10 +548,10 @@ else
 end
 
 " Configure commentary plugin.
-xmap ,c <Plug>Commentary
-nmap ,c <Plug>Commentary
-nmap ,cc <Plug>CommentaryLine
-nmap ,cu <Plug>CommentaryUndo
+xmap ,c<space> <Plug>Commentary
+nmap ,c        <Plug>Commentary
+nmap ,c<space> <Plug>CommentaryLine
+nmap ,cu       <Plug>CommentaryUndo
 
 " Do not switch tab/window when selecting an already opened buffer with
 " bufexplorer.
