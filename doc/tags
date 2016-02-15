@@ -32,6 +32,7 @@
 :CVSWatchOn	vcscommand.txt	/*:CVSWatchOn*
 :CVSWatchRemove	vcscommand.txt	/*:CVSWatchRemove*
 :CVSWatchers	vcscommand.txt	/*:CVSWatchers*
+:Commentary	commentary.txt	/*:Commentary*
 :FileBeagle	filebeagle.txt	/*:FileBeagle*
 :FileBeagleBufferDir	filebeagle.txt	/*:FileBeagleBufferDir*
 :GLVS	pi_getscript.txt	/*:GLVS*
@@ -140,9 +141,6 @@ VCSCommandVCSTypeOverride	vcscommand.txt	/*VCSCommandVCSTypeOverride*
 VCSCommandVCSTypePreference	vcscommand.txt	/*VCSCommandVCSTypePreference*
 Vimball-copyright	pi_vimball.txt	/*Vimball-copyright*
 [%	matchit.txt	/*[%*
-\\	commentary.txt	/*\\\\*
-\\\	commentary.txt	/*\\\\\\*
-\\u	commentary.txt	/*\\\\u*
 ]%	matchit.txt	/*]%*
 aF	textobj-function.txt	/*aF*
 af	textobj-function.txt	/*af*
@@ -291,6 +289,7 @@ g:vimball_home	pi_vimball.txt	/*g:vimball_home*
 g:vimball_mkdir	pi_vimball.txt	/*g:vimball_mkdir*
 gc	commentary.txt	/*gc*
 gcc	commentary.txt	/*gcc*
+gcgc	commentary.txt	/*gcgc*
 gcu	commentary.txt	/*gcu*
 getlatestvimscripts-install	pi_getscript.txt	/*getlatestvimscripts-install*
 getscript	pi_getscript.txt	/*getscript*
@@ -364,6 +363,7 @@ newline-snippets	yasnippets.txt	/*newline-snippets*
 o_[%	matchit.txt	/*o_[%*
 o_]%	matchit.txt	/*o_]%*
 o_g%	matchit.txt	/*o_g%*
+o_gc	commentary.txt	/*o_gc*
 pi_getscript.txt	pi_getscript.txt	/*pi_getscript.txt*
 pi_vimball.txt	pi_vimball.txt	/*pi_vimball.txt*
 skeleton-ask	yasnippets.txt	/*skeleton-ask*
@@ -489,7 +489,6 @@ textobj-user-region-type	textobj-user.txt	/*textobj-user-region-type*
 textobj-user-specs	textobj-user.txt	/*textobj-user-specs*
 textobj-user.txt	textobj-user.txt	/*textobj-user.txt*
 v_[%	matchit.txt	/*v_[%*
-v_\\	commentary.txt	/*v_\\\\*
 v_]%	matchit.txt	/*v_]%*
 v_a%	matchit.txt	/*v_a%*
 v_g%	matchit.txt	/*v_g%*
