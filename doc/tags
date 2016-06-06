@@ -106,6 +106,9 @@ DechoVarOff	Decho.txt	/*DechoVarOff*
 DechoVarOn	Decho.txt	/*DechoVarOn*
 Dredir	Decho.txt	/*Dredir*
 Dsep	Decho.txt	/*Dsep*
+FileBeagleBufNew	filebeagle.txt	/*FileBeagleBufNew*
+FileBeagleReadPost	filebeagle.txt	/*FileBeagleReadPost*
+FileBeagleReadPre	filebeagle.txt	/*FileBeagleReadPre*
 GetLatestVimScripts	pi_getscript.txt	/*GetLatestVimScripts*
 GetLatestVimScripts-copyright	pi_getscript.txt	/*GetLatestVimScripts-copyright*
 GetLatestVimScripts_dat	pi_getscript.txt	/*GetLatestVimScripts_dat*
@@ -218,11 +221,18 @@ decho_settings	Decho.txt	/*decho_settings*
 defining-skeletons	yasnippets.txt	/*defining-skeletons*
 defining-snippets	yasnippets.txt	/*defining-snippets*
 dfunc	Decho.txt	/*dfunc*
+diffchar	diffchar.txt	/*diffchar*
+diffchar-commands	diffchar.txt	/*diffchar-commands*
+diffchar-history	diffchar.txt	/*diffchar-history*
+diffchar-keymaps	diffchar.txt	/*diffchar-keymaps*
+diffchar-options	diffchar.txt	/*diffchar-options*
+diffchar.txt	diffchar.txt	/*diffchar.txt*
 dret	Decho.txt	/*dret*
 expand-command	yasnippets.txt	/*expand-command*
 file-skeletons	yasnippets.txt	/*file-skeletons*
 filebeagle	filebeagle.txt	/*filebeagle*
 filebeagle-adding-files	filebeagle.txt	/*filebeagle-adding-files*
+filebeagle-autocommands	filebeagle.txt	/*filebeagle-autocommands*
 filebeagle-buffer-commands	filebeagle.txt	/*filebeagle-buffer-commands*
 filebeagle-buffer-key-maps	filebeagle.txt	/*filebeagle-buffer-key-maps*
 filebeagle-contents	filebeagle.txt	/*filebeagle-contents*
@@ -262,6 +272,7 @@ g:dechomode	Decho.txt	/*g:dechomode*
 g:dechovar	Decho.txt	/*g:dechovar*
 g:dechovarname	Decho.txt	/*g:dechovarname*
 g:filebeagle_buffer_legacy_key_maps	filebeagle.txt	/*g:filebeagle_buffer_legacy_key_maps*
+g:filebeagle_check_gitignore	filebeagle.txt	/*g:filebeagle_check_gitignore*
 g:filebeagle_hijack_netrw	filebeagle.txt	/*g:filebeagle_hijack_netrw*
 g:filebeagle_show_hidden	filebeagle.txt	/*g:filebeagle_show_hidden*
 g:filebeagle_show_line_numbers	filebeagle.txt	/*g:filebeagle_show_line_numbers*

@@ -41,6 +41,8 @@ let g:filebeagle_buffer_legacy_key_maps = get(g:, 'filebeagle_buffer_legacy_key_
 let g:filebeagle_buffer_background_key_map_prefix = get(g:, 'filebeagle_buffer_background_key_map_prefix', 'p')
 let g:filebeagle_buffer_normal_key_maps = get(g:, 'filebeagle_buffer_normal_key_maps', {})
 let g:filebeagle_buffer_visual_key_maps = get(g:, 'filebeagle_buffer_visual_key_maps', {})
+let g:filebeagle_buffer_map_movement_keys = get(g:, 'filebeagle_buffer_map_movement_keys', 1)
+let g:filebeagle_check_gitignore = get(g:, 'filebeagle_check_gitignore', 0)
 
 " 1}}}
 
@@ -65,7 +67,7 @@ function! s:OpenDirHere(dir)
     if isdirectory(a:dir)
         let l:focal_dir = a:dir
         let l:focal_file = bufnr("%")
-        if has("win32")
+        if (has("win16") || has("win32") || has("win64")) && !&shellslash
             let l:focal_dir = substitute(l:focal_dir, '/', '\\', 'g')
             let l:focal_file = substitute(l:focal_file, '/', '\\', 'g')
         endif
