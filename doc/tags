@@ -221,12 +221,6 @@ decho_settings	Decho.txt	/*decho_settings*
 defining-skeletons	yasnippets.txt	/*defining-skeletons*
 defining-snippets	yasnippets.txt	/*defining-snippets*
 dfunc	Decho.txt	/*dfunc*
-diffchar	diffchar.txt	/*diffchar*
-diffchar-commands	diffchar.txt	/*diffchar-commands*
-diffchar-history	diffchar.txt	/*diffchar-history*
-diffchar-keymaps	diffchar.txt	/*diffchar-keymaps*
-diffchar-options	diffchar.txt	/*diffchar-options*
-diffchar.txt	diffchar.txt	/*diffchar.txt*
 dret	Decho.txt	/*dret*
 expand-command	yasnippets.txt	/*expand-command*
 file-skeletons	yasnippets.txt	/*file-skeletons*
