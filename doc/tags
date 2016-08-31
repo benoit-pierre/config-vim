@@ -271,6 +271,7 @@ g:filebeagle_hijack_netrw	filebeagle.txt	/*g:filebeagle_hijack_netrw*
 g:filebeagle_show_hidden	filebeagle.txt	/*g:filebeagle_show_hidden*
 g:filebeagle_show_line_numbers	filebeagle.txt	/*g:filebeagle_show_line_numbers*
 g:filebeagle_show_line_relativenumbers	filebeagle.txt	/*g:filebeagle_show_line_relativenumbers*
+g:filebeagle_statusline	filebeagle.txt	/*g:filebeagle_statusline*
 g:filebeagle_suppress_keymaps	filebeagle.txt	/*g:filebeagle_suppress_keymaps*
 g:manpageview_K_EXT	manpageview.txt	/*g:manpageview_K_EXT*
 g:manpageview_iconv	manpageview.txt	/*g:manpageview_iconv*
