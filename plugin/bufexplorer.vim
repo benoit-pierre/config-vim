@@ -424,7 +424,7 @@ function! s:DisplayBufferList()
     " Do not set bufhidden since it wipes out the data if we switch away from
     " the buffer using CTRL-^.
     setlocal buftype=nofile
-    setlocal modifiable
+    setlocal modifiable noreadonly
     setlocal noswapfile
     setlocal nowrap
 

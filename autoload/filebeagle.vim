@@ -365,6 +365,7 @@ function! s:NewDirectoryViewer()
         setlocal noinsertmode
         setlocal cursorline
         setlocal nospell
+        setlocal modifiable noreadonly
         set ft=filebeagle
     endfunction
 
