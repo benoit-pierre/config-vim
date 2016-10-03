@@ -28,8 +28,9 @@ let s:gitstatus_mappings =
       \ 'tag_added'   : [ 'ma' ],
       \ 'tag_deleted' : [ 'md' ],
       \ 'tag_modified': [ 'mm' ],
+      \ 'tag_unmerged': [ 'mu' ],
       \ 'tag_renamed' : [ 'mr' ],
-      \ 'tag_unknown' : [ 'mu' ],
+      \ 'tag_unknown' : [ 'm?' ],
       \ }
 
 if exists('g:gitstatus_mappings')
@@ -41,7 +42,7 @@ let s:gitstatus_matchline = s:gitstatus_nextline.'\s\+\(.*\)$'
 
 let s:gitstatus_op_criterion =
       \ {
-      \ 'add'     : 'deleted || modified || renamed || unknown',
+      \ 'add'     : 'deleted || modified || unmerged || renamed || unknown',
       \ 'commit'  : '!unknown',
       \ 'del'     : '!unknown && !deleted && !added',
       \ 'extmerge': 'modified',
@@ -218,10 +219,11 @@ function! gitstatus#parse_entry_state(ln)
     return []
   endif
 
-  let added   = (l[0] == 'A')
-  let renamed = (l[0] == 'R')
-  let unknown = (l[0] == '?')
-  let modified = (l[0] == 'M' || l[1] == 'M' || l[1] == 'U')
+  let added    = (l[0] == 'A')
+  let renamed  = (l[0] == 'R')
+  let unknown  = (l[0] == '?')
+  let modified = (l[0] == 'M' || l[1] == 'M' || (l[0] == 'U' && l[1] == 'U'))
+  let unmerged = (l[0] == 'U' || l[1] == 'U')
   let deleted  = (l[0] == 'D' || l[1] == 'D')
 
   let old_entry = m[2]
@@ -244,7 +246,7 @@ function! gitstatus#parse_entry_state(ln)
 
   endif
 
-  return [renamed, unknown, modified, deleted, added, old_entry, new_entry]
+  return [renamed, unknown, modified, unmerged, deleted, added, old_entry, new_entry]
 
 endfunction
 
@@ -259,7 +261,7 @@ function! gitstatus#filter_entries(range, criterion)
       continue
     endif
 
-    let [renamed, unknown, modified, deleted, added, old_entry, new_entry] = s
+    let [renamed, unknown, modified, unmerged, deleted, added, old_entry, new_entry] = s
     if !eval(a:criterion)
       continue
     endif
@@ -281,7 +283,7 @@ function! gitstatus#showdiff()
     return
   endif
 
-  let [renamed, unknown, modified, deleted, added, old_entry, new_entry] = s
+  let [renamed, unknown, modified, unmerged, deleted, added, old_entry, new_entry] = s
 
   let new_entry_fullpath = t:gitstatus_tree.'/'.new_entry
 
@@ -326,7 +328,11 @@ function! gitstatus#showdiff()
       " Get original version.
       let cmd = 'git show '
       if 'HEAD' == t:gitstatus_revision && !t:gitstatus_staged
-        let cmd .= ':0'
+        if unmerged
+          let cmd .= ':2'
+        else
+          let cmd .= ':0'
+        endif
       else
         let cmd .= t:gitstatus_revision
       endif
@@ -644,7 +650,7 @@ function! gitstatus#tag(criterion, set)
       continue
     endif
 
-    let [renamed, unknown, modified, deleted, added, old_entry, new_entry] = s
+    let [renamed, unknown, modified, unmerged, deleted, added, old_entry, new_entry] = s
     if eval(a:criterion)
       if a:set
         call gitstatus#tag_line(ln)
@@ -825,7 +831,7 @@ function! gitstatus#start(...)
     endfor
   endfor
 
-  for name in [ 'added', 'deleted', 'modified', 'renamed', 'unknown' ]
+  for name in [ 'added', 'deleted', 'modified', 'unmerged', 'renamed', 'unknown' ]
     for map in s:gitstatus_mappings['tag_'.name]
       exe 'nnoremap <silent> <buffer> ,<Space>'.toupper(map).' :call gitstatus#tag("'.name.'", 1)<CR>'
       exe 'nnoremap <silent> <buffer> ,<Space>'.tolower(map).' :call gitstatus#tag("'.name.'", 0)<CR>'
