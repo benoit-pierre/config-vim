@@ -257,6 +257,7 @@ g:bufExplorerSplitHorzSize	bufexplorer.txt	/*g:bufExplorerSplitHorzSize*
 g:bufExplorerSplitOutPathName	bufexplorer.txt	/*g:bufExplorerSplitOutPathName*
 g:bufExplorerSplitRight	bufexplorer.txt	/*g:bufExplorerSplitRight*
 g:bufExplorerSplitVertSize	bufexplorer.txt	/*g:bufExplorerSplitVertSize*
+g:bufExplorerVersionWarn	bufexplorer.txt	/*g:bufExplorerVersionWarn*
 g:decho_bufenter	Decho.txt	/*g:decho_bufenter*
 g:decho_bufname	Decho.txt	/*g:decho_bufname*
 g:decho_hide	Decho.txt	/*g:decho_hide*

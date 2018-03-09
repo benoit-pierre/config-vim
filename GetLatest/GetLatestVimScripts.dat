@@ -6,7 +6,6 @@ ScriptID SourceID Filename
 273 19574 :AutoInstall: taglist.vim
 90 19809 :AutoInstall: vcscommand.vim
 2241 8691 :AutoInstall: vcsbzr.vim
-42 24205 :AutoInstall: bufexplorer.vim
 120 9388 :AutoInstall: Decho.vim
 2048 7817 :AutoInstall: blockdiff.vim
 389 4652 :AutoInstall: scratch.vim
