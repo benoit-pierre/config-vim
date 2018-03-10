@@ -17,7 +17,6 @@ ScriptID SourceID Filename
 2610 11182 :AutoInstall: textobj/entire.vim
 2484 11291 :AutoInstall: textobj/indent.vim
 2619 10453 :AutoInstall: textobj/function.vim
-2699 11985 :AutoInstall: textobj/arg.vim
 2542 17189 :AutoInstall: starrange.vim
 2136 19285 :AutoInstall: repeat.vim
 3695 24002 :AutoInstall: commentary.vim
