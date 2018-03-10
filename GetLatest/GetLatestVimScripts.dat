@@ -14,7 +14,6 @@ ScriptID SourceID Filename
 974 4316 :AutoInstall: python.vim
 39 8196 :AutoInstall: matchit.vim
 4962 22813 :AutoInstall: filebeagle.vim
-2100 17246 :AutoInstall: textobj/user.vim
 2610 11182 :AutoInstall: textobj/entire.vim
 2484 11291 :AutoInstall: textobj/indent.vim
 2619 10453 :AutoInstall: textobj/function.vim
