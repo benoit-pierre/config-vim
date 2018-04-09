@@ -242,6 +242,7 @@ if !has('gui_running')
 
   " Enable mouse support for all modes but command line.
   set mouse=nvi
+  set ttymouse=sgr
 
   " No beep, and no visual bell.
   set vb t_vb=
