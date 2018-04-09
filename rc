@@ -436,6 +436,12 @@ endfor
 
 " }}}
 
+" Man/info pages support. {{{
+
+set keywordprg=:Man
+
+" }}}
+
 " Improved completion. {{{
 
 set complete=.,t,i,k
