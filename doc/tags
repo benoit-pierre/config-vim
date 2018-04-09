@@ -36,8 +36,6 @@
 :FileBeagle	filebeagle.txt	/*:FileBeagle*
 :FileBeagleBufferDir	filebeagle.txt	/*:FileBeagleBufferDir*
 :MatchDebug	matchit.txt	/*:MatchDebug*
-:MkVimball	pi_vimball.txt	/*:MkVimball*
-:RmVimball	pi_vimball.txt	/*:RmVimball*
 :TextobjEntireDefaultKeyMappings	textobj-entire.txt	/*:TextobjEntireDefaultKeyMappings*
 :TextobjFunctionDefaultKeyMappings	textobj-function.txt	/*:TextobjFunctionDefaultKeyMappings*
 :TextobjIndentDefaultKeyMappings	textobj-indent.txt	/*:TextobjIndentDefaultKeyMappings*
@@ -58,7 +56,6 @@
 :TlistUndebug	taglist.txt	/*:TlistUndebug*
 :TlistUnlock	taglist.txt	/*:TlistUnlock*
 :TlistUpdate	taglist.txt	/*:TlistUpdate*
-:UseVimball	pi_vimball.txt	/*:UseVimball*
 :VCSAdd	vcscommand.txt	/*:VCSAdd*
 :VCSAnnotate	vcscommand.txt	/*:VCSAnnotate*
 :VCSBlame	vcscommand.txt	/*:VCSBlame*
@@ -76,7 +73,6 @@
 :VCSUnlock	vcscommand.txt	/*:VCSUnlock*
 :VCSUpdate	vcscommand.txt	/*:VCSUpdate*
 :VCSVimDiff	vcscommand.txt	/*:VCSVimDiff*
-:VimballList	pi_vimball.txt	/*:VimballList*
 <Plug>(textobj-entire-a)	textobj-entire.txt	/*<Plug>(textobj-entire-a)*
 <Plug>(textobj-entire-i)	textobj-entire.txt	/*<Plug>(textobj-entire-i)*
 <Plug>(textobj-function-A)	textobj-function.txt	/*<Plug>(textobj-function-A)*
@@ -121,7 +117,6 @@ VCSCommandSVNExec	vcscommand.txt	/*VCSCommandSVNExec*
 VCSCommandSplit	vcscommand.txt	/*VCSCommandSplit*
 VCSCommandVCSTypeOverride	vcscommand.txt	/*VCSCommandVCSTypeOverride*
 VCSCommandVCSTypePreference	vcscommand.txt	/*VCSCommandVCSTypePreference*
-Vimball-copyright	pi_vimball.txt	/*Vimball-copyright*
 [%	matchit.txt	/*[%*
 ]%	matchit.txt	/*]%*
 aF	textobj-function.txt	/*aF*
@@ -217,8 +212,6 @@ g:textobj_entire_no_default_key_mappings	textobj-entire.txt	/*g:textobj_entire_n
 g:textobj_function_no_default_key_mappings	textobj-function.txt	/*g:textobj_function_no_default_key_mappings*
 g:textobj_indent_no_default_key_mappings	textobj-indent.txt	/*g:textobj_indent_no_default_key_mappings*
 g:textobj_{plugin}_no_default_key_mappings	textobj-user.txt	/*g:textobj_{plugin}_no_default_key_mappings*
-g:vimball_home	pi_vimball.txt	/*g:vimball_home*
-g:vimball_mkdir	pi_vimball.txt	/*g:vimball_mkdir*
 gc	commentary.txt	/*gc*
 gcc	commentary.txt	/*gcc*
 gcgc	commentary.txt	/*gcgc*
@@ -284,7 +277,6 @@ o_[%	matchit.txt	/*o_[%*
 o_]%	matchit.txt	/*o_]%*
 o_g%	matchit.txt	/*o_g%*
 o_gc	commentary.txt	/*o_gc*
-pi_vimball.txt	pi_vimball.txt	/*pi_vimball.txt*
 skeleton-ask	yasnippets.txt	/*skeleton-ask*
 skeletons-shared	yasnippets.txt	/*skeletons-shared*
 snippet-markers	yasnippets.txt	/*snippet-markers*
@@ -419,7 +411,6 @@ v_]%	matchit.txt	/*v_]%*
 v_a%	matchit.txt	/*v_a%*
 v_g%	matchit.txt	/*v_g%*
 v_gc	commentary.txt	/*v_gc*
-vba	pi_vimball.txt	/*vba*
 vcscommand	vcscommand.txt	/*vcscommand*
 vcscommand-buffer-management	vcscommand.txt	/*vcscommand-buffer-management*
 vcscommand-buffer-variables	vcscommand.txt	/*vcscommand-buffer-variables*
@@ -444,13 +435,6 @@ vcscommand-ssh-wrapper	vcscommand.txt	/*vcscommand-ssh-wrapper*
 vcscommand-statusline	vcscommand.txt	/*vcscommand-statusline*
 vcscommand.txt	vcscommand.txt	/*vcscommand.txt*
 vim-man	man.txt	/*vim-man*
-vimball	pi_vimball.txt	/*vimball*
-vimball-contents	pi_vimball.txt	/*vimball-contents*
-vimball-extract	pi_vimball.txt	/*vimball-extract*
-vimball-history	pi_vimball.txt	/*vimball-history*
-vimball-intro	pi_vimball.txt	/*vimball-intro*
-vimball-manual	pi_vimball.txt	/*vimball-manual*
-vimball-windows	pi_vimball.txt	/*vimball-windows*
 yasnippets	yasnippets.txt	/*yasnippets*
 yasnippets-file	yasnippets.txt	/*yasnippets-file*
 yasnippets-jump	yasnippets.txt	/*yasnippets-jump*
