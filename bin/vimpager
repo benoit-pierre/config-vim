@@ -39,6 +39,7 @@ options = {
   :squeeze_blank_lines => false,
   :no_alternate_screen => false,
   :quit_if_one_screen => false,
+  :ignore_case => false,
   :pipe_edit => false,
   :man_page => false,
   :gui => false,
@@ -80,6 +81,8 @@ until arglist.empty?
     case o
     when '-g'
       options[:gui] = value
+    when '-i'
+      options[:ignore_case] = value
     when '-s'
       options[:squeeze_blank_lines] = value
     when '-X'
@@ -119,6 +122,7 @@ unless File.readable?(VIMPAGER_RC)
   cmd << '-s' if options[:squeeze_blank_lines]
   cmd << '-X' if options[:no_alternate_screen]
   cmd << '-F' if options[:quit_if_one_screen]
+  cmd << '-i' if options[:ignore_case]
   cmd.concat(filenames)
 
   dbg(:cmd, cmd)
@@ -138,6 +142,11 @@ cmd << VIMPAGER_RC
 cmd << '-g' if options[:gui]
 cmd << '-f' if options[:gui]
 cmd << '+set ft=man' if options[:man_page]
+
+if options[:ignore_case]
+  cmd << '-c'
+  cmd << 'set ignorecase smartcase'
+end
 
 vless_opt = []
 vless_opt << '-F' if options[:quit_if_one_screen]
