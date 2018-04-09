@@ -436,14 +436,6 @@ endfor
 
 " }}}
 
-" Man/info pages support. {{{
-
-let g:manpageview_multimanpage = 0
-
-autocmd FileType man set buftype=nofile
-
-" }}}
-
 " Improved completion. {{{
 
 set complete=.,t,i,k
