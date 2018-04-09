@@ -1,8 +1,7 @@
 
 " Colorscheme.
-let g:moria_style='black'
 set background=dark
-colorscheme moria
+colorscheme hybrid_reverse
 
 " Font.
 if has('win32')

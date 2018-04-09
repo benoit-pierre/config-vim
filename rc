@@ -234,10 +234,10 @@ if !has('gui_running')
   set timeout timeoutlen=3000 ttimeoutlen=100
 
   " Colorscheme.
-  let g:moria_style = 'black'
   set background=dark
   if 'linux' != $TERM
-    colorscheme moria_256
+    let g:hybrid_custom_term_colors = 1
+    colorscheme hybrid_reverse
   endif
 
   " Enable mouse support for all modes but command line.
