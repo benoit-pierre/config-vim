@@ -35,62 +35,6 @@ def cat(io, squeeze_blank_lines=false)
   end
 end
 
-def parse_options(arg, strict=true)
-
-  opts = arg[1..-1]
-  if '-' == opts[0]
-    # --: stop options parsing.
-    return nil if 1 == opts.size
-    # Long option.
-    if '+' == opts[1]
-      value = false
-      opts = [ opts[2..-1] ]
-    else
-      value = true
-      opts = [ opts[1..-1] ]
-    end
-  else
-    # Short option(s).
-    if '+' == opts[0]
-      value = false
-      opts = opts[1..-1].chars
-    else
-      value = true
-      opts = opts.chars
-    end
-  end
-
-  results = {}
-
-  opts.each do |o|
-
-    case o
-    when 'g'
-      results[:gui] = value
-    when 's'
-      results[:squeeze_blank_lines] = value
-    when 'X'
-      results[:no_alternate_screen] = value
-    when 'F'
-      results[:quit_if_one_screen] = value
-    when 'version'
-      puts "vimpager #{$VERSION}"
-      exit 0
-    when 'man'
-      results[:man_page] = value
-    when 'pipe-edit'
-      results[:pipe_edit] = value
-      results[:quit_if_one_screen] = false if value
-    else
-      raise "unsupported option -#{o}" if strict
-    end
-
-  end
-
-  return results
-
-end
-
 options = {
   :squeeze_blank_lines => false,
   :no_alternate_screen => false,
@@ -103,26 +47,64 @@ options = {
 dbg(:VLESS_OPT, ENV['VLESS_OPT'])
 dbg(:ARGV, ARGV)
 
-ENV.fetch('VLESS_OPT', '').split.each do |arg|
+# Parse arguments.
 
-  options.update(parse_options(arg))
+arglist = ARGV
+arglist.unshift(ENV.fetch('VLESS_OPT', '').split)
+arglist.flatten!
+
+filenames = []
+until arglist.empty?
+
+  arg = arglist.shift
+  break if arg == '--'
+
+  # Non option argument.
+  if arg =~ /^(-$|[^-+])/
+    filenames << arg
+    next
+  end
+
+  if arg.start_with?('--')
+    # Long option.
+    arg, value = arg.split('=', 2)
+    opts = [arg]
+  else
+    # Short option(s).
+    value = arg.start_with?('-')
+    opts = arg[1..-1].chars.collect { |o| '-' + o }
+  end
+
+  opts.each do |o|
+
+    case o
+    when '-g'
+      options[:gui] = value
+    when '-s'
+      options[:squeeze_blank_lines] = value
+    when '-X'
+      options[:no_alternate_screen] = value
+    when '-F'
+      options[:quit_if_one_screen] = value
+    when '--version'
+      puts "vimpager #{$VERSION}"
+      exit 0
+    when '--man'
+      options[:man_page] = true
+    when '--pipe-edit'
+      options[:pipe_edit] = true
+      options[:quit_if_one_screen] = false
+    else
+      raise "unsupported option #{o}"
+    end
+
+  end
 
 end
-
-ARGV.collect! do |arg|
-
-  next arg if '-' == arg or '-' != arg[0]
-  options.update(parse_options(arg))
-  nil
-
-end
-
-ARGV.compact!
-ARGV.uniq!
-ARGV.shift if '--' == ARGV[0]
+filenames.uniq!
 
 dbg(:options, options)
-dbg(:args, ARGV)
+dbg(:filenames, filenames)
 
 unless options[:pipe_edit] or STDOUT.isatty
   cat(Kernel, options[:squeeze_blank_lines])
@@ -137,7 +119,7 @@ unless File.readable?(VIMPAGER_RC)
   cmd << '-s' if options[:squeeze_blank_lines]
   cmd << '-X' if options[:no_alternate_screen]
   cmd << '-F' if options[:quit_if_one_screen]
-  cmd.concat(ARGV)
+  cmd.concat(filenames)
 
   dbg(:cmd, cmd)
 
@@ -155,11 +137,7 @@ cmd = %w{ vim -R -u }
 cmd << VIMPAGER_RC
 cmd << '-g' if options[:gui]
 cmd << '-f' if options[:gui]
-
-if options[:man_page]
-  cmd << '-c'
-  cmd << 'set ft=man'
-end
+cmd << '+set ft=man' if options[:man_page]
 
 vless_opt = []
 vless_opt << '-F' if options[:quit_if_one_screen]
@@ -171,33 +149,21 @@ dbg(:VLESS_OPT, ENV['VLESS_OPT'])
 
 # Default to adding stdin at the end of the arguments list.
 explicit_stdin = false
-add_stdin = ARGV.size
+add_stdin = filenames.index('-')
+if add_stdin
+  filenames.delete_at(add_stdin)
+  explicit_stdin = true
+elsif filenames.empty?
+  add_stdin = 0
+end
 stdin_file = nil
 
-# Check for filename (do we need to add stdin?).
-ARGV.each_with_index do |arg, n|
-
-  if '--' == arg then
-    # End of options/commands, check if we have at least one more argument.
-    add_stdin = nil unless nil == ARGV[n + 1]
-    break
+# Check files existence.
+filenames.each do |arg|
+  if not File.file?(arg)
+    STDERR.puts "#{arg}: No such file or directory"
+    exit 1
   end
-
-  if '-' == arg then
-    # Stdin marker, will be replaced by temporary file name.
-    explicit_stdin = true
-    ARGV.delete_at(n)
-    add_stdin = n
-    break
-  end
-
-  # Check for command or option.
-  unless '+' == arg[0] or '-' == arg[0] then
-    # We've found a filename! No need to add stdin.
-    add_stdin = nil
-    break
-  end
-
 end
 
 if add_stdin
@@ -224,11 +190,11 @@ if add_stdin
 
   stdin_file.close
 
-  ARGV.insert(add_stdin, stdin_file.path)
+  filenames.insert(add_stdin, stdin_file.path)
 
   stdin_cmd = 'setl noro'
   stdin_cmd << ' buftype=nofile' unless options[:pipe_edit]
-  if stdin_file.path == ARGV[0]
+  if stdin_file.path == filenames[0]
     cmd << "+#{stdin_cmd}"
   else
     cmd << "+autocmd BufRead #{stdin_file.path} #{stdin_cmd}"
@@ -240,7 +206,8 @@ else
 
 end
 
-cmd.concat(ARGV)
+cmd << '--'
+cmd.concat(filenames)
 
 dbg(:cmd, cmd)
 
