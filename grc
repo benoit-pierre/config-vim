@@ -8,6 +8,7 @@ if has('win32')
   " Since selecting an unavailable font will crash the GUI in Windows, and the
   " default font looks ok, don't override it...
 else
+  set guifont=Fira\ Code\ 11
 endif
 
 " Force sane default window size.
