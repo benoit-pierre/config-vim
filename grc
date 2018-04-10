@@ -22,6 +22,9 @@ set guicursor=a:blinkon0
 " No toolbar.
 set guioptions-=T
 
+" No menu.
+set guioptions-=m
+
 " Use console dialogs instead of popup dialogs for simple choices.
 set guioptions+=c
 
