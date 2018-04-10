@@ -9,6 +9,8 @@ if has('win32')
   " and the default font looks ok, don't override it...
 else
   set guifont=Fira\ Code\ 11
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme = 'powerlineish'
 endif
 
 " Force sane default window size.

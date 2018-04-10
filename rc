@@ -236,6 +236,8 @@ if !has('gui_running')
   " Colorscheme.
   set background=dark
   if 'linux' != $TERM
+    let g:airline_powerline_fonts = 1
+    let g:airline_theme = 'powerlineish'
     let g:hybrid_custom_term_colors = 1
     colorscheme hybrid_reverse
   endif
