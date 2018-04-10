@@ -5,8 +5,8 @@ colorscheme hybrid_reverse
 
 " Font.
 if has('win32')
-  " Since selecting an unavailable font will crash the GUI in Windows, and the
-  " default font looks ok, don't override it...
+  " Since selecting an unavailable font will crash the GUI in Windows,
+  " and the default font looks ok, don't override it...
 else
   set guifont=Fira\ Code\ 11
 endif
@@ -19,7 +19,7 @@ set guicursor=a:blinkon0
 
 " GUI options. {{{
 
-" No toolbar
+" No toolbar.
 set guioptions-=T
 
 " Use console dialogs instead of popup dialogs for simple choices.
