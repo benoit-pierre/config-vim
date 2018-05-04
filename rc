@@ -589,8 +589,8 @@ nmap <silent> ,d :e %:h<CR>
 " }}}
 
 " For iterating on errors.
-nmap <silent> <M-up> :cp<CR>
-nmap <silent> <M-down> :cn<CR>
+nmap <silent> <C-Up> :cprevious<CR>
+nmap <silent> <C-Down> :cnext<CR>
 
 " Buffer save/deletion. {{{
 
