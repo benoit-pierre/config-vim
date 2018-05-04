@@ -52,7 +52,7 @@ if g:vless_opt_F && 1 == argc()
 
     if blines <= winheight(0) && (blines + 1) <= &lines
       " Hide ~ after EOF.
-      highlight NonText ctermfg=bg guifg=bg
+      highlight NonText ctermfg=NONE guifg=NONE
       " If list was set, disable it, and show tabs underlined:
       " this way, the actual content is not changed.
       if &list
