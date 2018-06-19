@@ -63,6 +63,10 @@ if g:vless_opt_F && 1 == argc()
       set nocursorcolumn nocursorline
       set laststatus=0 showtabline=0
 
+      if g:vless_opt_X
+        " Don't use terminal alternate screen.
+        set t_ti= t_te=
+      endif
       redraw
       if g:vless_opt_X
         " Move terminal cursor after the last line.
@@ -83,16 +87,6 @@ if g:vless_opt_F && 1 == argc()
     autocmd BufWinEnter * call QuitIfWholeBufferVisible()
   augroup END
 
-endif
-
-" }}}
-
-" Emulate less -X option. {{{
-
-" Don't use terminal alternate screen.
-
-if g:vless_opt_X
-  set t_ti= t_te=
 endif
 
 " }}}
